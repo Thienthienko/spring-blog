@@ -1,5 +1,6 @@
 package org.wildcodeschool.myblog.controller;
 
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,6 +10,7 @@ import org.wildcodeschool.myblog.model.Category;
 import org.wildcodeschool.myblog.repository.CategoryRepository;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/categories")
@@ -33,7 +35,8 @@ public class CategoryController {
                 articleDTO.setUpdatedAt(article.getUpdatedAt());
                 articleDTO.setCategoryName(article.getCategory().getName());
                 return articleDTO;
-            }).toList());
+
+            }).collect(Collectors.toList()));
         }
         return categoryDTO;
     }
@@ -44,9 +47,10 @@ public class CategoryController {
         if (categories.isEmpty()) {
             return ResponseEntity.noContent().build();
         }
-        List<CategoryDTO> categoryDTOs = categories.stream().map(this::convertToDTO).toList();
-        return ResponseEntity.ok(categoryDTOs);
+        List<CategoryDTO> categoryDTOS = categories.stream().map(this::convertToDTO).collect(Collectors.toList());
+        return ResponseEntity.ok(categoryDTOS);
     }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<CategoryDTO> getCategoryById(@PathVariable Long id) {
@@ -59,33 +63,9 @@ public class CategoryController {
 
     @PostMapping
     public ResponseEntity<CategoryDTO> createCategory(@RequestBody Category category) {
-
         Category savedCategory = categoryRepository.save(category);
+
         return ResponseEntity.status(HttpStatus.CREATED).body(convertToDTO(savedCategory));
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<CategoryDTO> updateCategory(@PathVariable Long id, @RequestBody Category categoryDetails) {
-
-        Category category = categoryRepository.findById(id).orElse(null);
-        if (category == null) {
-            return ResponseEntity.notFound().build();
-        }
-
-        category.setName(categoryDetails.getName());
-        Category updatedCategory = categoryRepository.save(category);
-        return ResponseEntity.ok(convertToDTO(updatedCategory));
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteCategory(@PathVariable Long id) {
-
-        Category category = categoryRepository.findById(id).orElse(null);
-        if (category == null) {
-            return ResponseEntity.notFound().build();
-        }
-
-        categoryRepository.delete(category);
-        return ResponseEntity.noContent().build();
-    }
 }
