@@ -7,13 +7,12 @@ public class ImageDTO {
     private String url;
     private List<Long> articleIds;
 
-
-    public List<Long> getArticleIds() {
-        return articleIds;
+    public Long getId() {
+        return id;
     }
 
-    public void setArticleIds(List<Long> articleIds) {
-        this.articleIds = articleIds;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getUrl() {
@@ -24,13 +23,11 @@ public class ImageDTO {
         this.url = url;
     }
 
-    public Long getId() {
-        return id;
+    public List<Long> getArticleIds() {
+        return articleIds;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setArticleIds(List<Long> articleIds) {
+        this.articleIds = articleIds;
     }
-
-
 }

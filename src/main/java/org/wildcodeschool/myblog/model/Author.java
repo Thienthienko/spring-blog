@@ -2,13 +2,10 @@ package org.wildcodeschool.myblog.model;
 
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class Author {
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,9 +17,8 @@ public class Author {
     private String lastname;
 
     @OneToMany(mappedBy = "author")
-    private List<ArticleAuthor> articleAuthors = new ArrayList<>();
+    private List<ArticleAuthor> articleAuthors;
 
-    // Getters et setters
     public Long getId() {
         return id;
     }

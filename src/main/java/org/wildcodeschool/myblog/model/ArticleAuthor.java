@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 
 @Entity
 public class ArticleAuthor {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,7 +20,6 @@ public class ArticleAuthor {
     @Column(nullable = false, length = 50)
     private String contribution;
 
-    // Getters et setters
     public Long getId() {
         return id;
     }
@@ -53,5 +51,4 @@ public class ArticleAuthor {
     public void setContribution(String contribution) {
         this.contribution = contribution;
     }
-
 }

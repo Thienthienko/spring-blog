@@ -6,10 +6,10 @@ import java.util.List;
 
 @Entity
 public class Image {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
 
     @Column(nullable = false)
     private String url;
@@ -17,15 +17,13 @@ public class Image {
     @ManyToMany(mappedBy = "images")
     private List<Article> articles;
 
-
-    public List<Article> getArticles() {
-        return articles;
+    public Long getId() {
+        return id;
     }
 
-    public void setArticles(List<Article> articles) {
-        this.articles = articles;
+    public void setId(Long id) {
+        this.id = id;
     }
-
 
     public String getUrl() {
         return url;
@@ -35,12 +33,11 @@ public class Image {
         this.url = url;
     }
 
-
-    public void setId(Long id) {
-        this.id = id;
+    public List<Article> getArticles() {
+        return articles;
     }
 
-    public Long getId() {
-        return id;
+    public void setArticles(List<Article> articles) {
+        this.articles = articles;
     }
 }

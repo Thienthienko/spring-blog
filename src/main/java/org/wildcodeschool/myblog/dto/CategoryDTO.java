@@ -3,11 +3,11 @@ package org.wildcodeschool.myblog.dto;
 import java.util.List;
 
 public class CategoryDTO {
-
     private Long id;
     private String name;
     private List<ArticleDTO> articles;
 
+    // Getters et setters
 
     public Long getId() {
         return id;
@@ -32,6 +32,4 @@ public class CategoryDTO {
     public void setArticles(List<ArticleDTO> articles) {
         this.articles = articles;
     }
-
-
 }

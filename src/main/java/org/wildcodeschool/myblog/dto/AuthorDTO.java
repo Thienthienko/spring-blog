@@ -1,27 +1,18 @@
 package org.wildcodeschool.myblog.dto;
 
-import java.util.List;
-
 public class AuthorDTO {
+
     private Long id;
     private String firstname;
     private String lastname;
-    private List<ArticleAuthorDTO> articleAuthors;
 
-    public List<ArticleAuthorDTO> getArticleAuthors() {
-        return articleAuthors;
+
+    public Long getId() {
+        return id;
     }
 
-    public void setArticleAuthors(List<ArticleAuthorDTO> articleAuthors) {
-        this.articleAuthors = articleAuthors;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getFirstname() {
@@ -32,11 +23,11 @@ public class AuthorDTO {
         this.firstname = firstname;
     }
 
-    public Long getId() {
-        return id;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 }

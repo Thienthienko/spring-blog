@@ -3,7 +3,6 @@ package org.wildcodeschool.myblog.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -26,9 +25,8 @@ public class Article {
     private LocalDateTime updatedAt;
 
     @ManyToOne
-    @JoinColumn(name = "category_id", nullable = true)
+    @JoinColumn(name = "category_id")
     private Category category;
-
 
     @ManyToMany
     @JoinTable(
@@ -38,28 +36,8 @@ public class Article {
     )
     private List<Image> images;
 
-
     @OneToMany(mappedBy = "article")
-    private List<ArticleAuthor> articleAuthors = new ArrayList<>();
-
-
-    // Getters et setters
-
-    public List<ArticleAuthor> getArticleAuthors() {
-        return articleAuthors;
-    }
-
-    public void setArticleAuthors(List<ArticleAuthor> articleAuthors) {
-        this.articleAuthors = articleAuthors;
-    }
-
-    public List<Image> getImages() {
-        return images;
-    }
-
-    public void setImages(List<Image> images) {
-        this.images = images;
-    }
+    private List<ArticleAuthor> articleAuthors;
 
     public Long getId() {
         return id;
@@ -109,4 +87,19 @@ public class Article {
         this.category = category;
     }
 
+    public List<Image> getImages() {
+        return images;
+    }
+
+    public void setImages(List<Image> images) {
+        this.images = images;
+    }
+
+    public List<ArticleAuthor> getArticleAuthors() {
+        return articleAuthors;
+    }
+
+    public void setArticleAuthors(List<ArticleAuthor> articleAuthors) {
+        this.articleAuthors = articleAuthors;
+    }
 }
