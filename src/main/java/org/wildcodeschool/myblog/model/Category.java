@@ -18,14 +18,6 @@ public class Category {
     @OneToMany(mappedBy = "category")
     private List<Article> articles;
 
-    @Column(nullable = false, updatable = false)
-    private LocalDateTime createdAt;
-
-    @PrePersist
-    protected void onCreate() {
-        createdAt = LocalDateTime.now();
-    }
-
     public Long getId() {
         return id;
     }
@@ -48,9 +40,5 @@ public class Category {
 
     public void setArticles(List<Article> articles) {
         this.articles = articles;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
     }
 }
