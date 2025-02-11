@@ -7,12 +7,12 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public interface ArticleRepository extends JpaRepository<Article, Long> {
-
     List<Article> findByTitle(String title);
 
-    List<Article> findByContent(String content);
+    List<Article> findByContentContaining(String terms);
 
-    List<Article> findByCreatedAtAfter(LocalDateTime createdAtAfter);
+    List<Article> findByCreatedAtAfter(LocalDateTime date);
 
     List<Article> findTop5ByOrderByCreatedAtDesc();
+
 }

@@ -14,7 +14,6 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/images")
 public class ImageController {
-
     private final ImageRepository imageRepository;
     private final ArticleRepository articleRepository;
 

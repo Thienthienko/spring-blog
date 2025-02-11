@@ -7,7 +7,7 @@ public class CategoryDTO {
     private String name;
     private List<ArticleDTO> articles;
 
-    // Getters and setters
+    // Getters et setters
 
     public Long getId() {
         return id;

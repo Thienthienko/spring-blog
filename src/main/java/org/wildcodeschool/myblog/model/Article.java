@@ -32,10 +32,12 @@ public class Article {
     @JoinTable(
             name = "article_image",
             joinColumns = @JoinColumn(name = "article_id"),
-            inverseJoinColumns = @JoinColumn(name = "image_id"))
+            inverseJoinColumns = @JoinColumn(name = "image_id")
+    )
     private List<Image> images;
 
-    // Getters et setters
+    @OneToMany(mappedBy = "article")
+    private List<ArticleAuthor> articleAuthors;
 
     public Long getId() {
         return id;
@@ -91,5 +93,13 @@ public class Article {
 
     public void setImages(List<Image> images) {
         this.images = images;
+    }
+
+    public List<ArticleAuthor> getArticleAuthors() {
+        return articleAuthors;
+    }
+
+    public void setArticleAuthors(List<ArticleAuthor> articleAuthors) {
+        this.articleAuthors = articleAuthors;
     }
 }
