@@ -27,7 +27,7 @@ public class UserService {
 
         User user = new User();
         user.setEmail(email);
-        user.setPassword(passwordEncoder.encode(password)); // Encodage du mot de passe avec BCrypt
+        user.setPassword(passwordEncoder.encode(password));
         user.setRoles(roles);
         return userRepository.save(user);
     }
