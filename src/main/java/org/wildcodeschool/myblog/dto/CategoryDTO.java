@@ -7,8 +7,16 @@ public class CategoryDTO {
     private String name;
     private List<ArticleDTO> articles;
 
-    // Getters et setters
+    public CategoryDTO() {
+    }
 
+    public CategoryDTO(Long id, String name, List<ArticleDTO> articles) {
+        this.id = id;
+        this.name = name;
+        this.articles = articles;
+    }
+
+    // Getters et Setters
     public Long getId() {
         return id;
     }
